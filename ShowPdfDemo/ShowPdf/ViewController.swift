@@ -41,11 +41,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loadPdfFromWeb(_ sender: UIButton) {
-        if let pdfUrl = URL(string: "https://github.com/nmacambira/ShowPdf/blob/master/pdfWeb.pdf") {
+        if let pdfUrl = URL(string: "someURL/pdfWeb.pdf") {
             urlRequest = URLRequest(url: pdfUrl)
             performSegue(withIdentifier: "showPdfOnWebView", sender: self)
-        } else {
-            print("Pdf file doesn't exist")
         }
     }
 

@@ -58,8 +58,7 @@ class WebViewController: UIViewController {
     
     // MARK: Action
     
-    @IBAction func doneButton(_ sender: UIButton) {
-        
+    @IBAction func doneButton(_ sender: UIButton) {        
         dismiss(animated: true, completion: nil)
     }   
 }
@@ -73,6 +72,11 @@ extension WebViewController: UIWebViewDelegate {
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         print("Webview fail with error \(error.localizedDescription)")
+        
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

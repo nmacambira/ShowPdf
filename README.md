@@ -7,14 +7,14 @@ Show Pdf from Xcode folder (Bundle), from disk and from web using UIWebView or U
 
 ```swift
 
-clas ViewController: UIViewController {
+class ViewController: UIViewController {
     var documentInteractionController: UIDocumentInteractionController!
 
     func loadPdfWihDocumentInteractionController() {
 
         //Pdf from Xcode folder (Bundle)
         if let bundleUrl = Bundle.main.url(forResource: "documentName", withExtension: "pdf", subdirectory: nil, localization: nil)  {
-            documentInteractionController = UIDocumentInteractionController(url: pdfUrl)
+            documentInteractionController = UIDocumentInteractionController(url: bundleUrl)
             documentInteractionController.delegate = self
             documentInteractionController.presentPreview(animated: true)
         }
@@ -27,7 +27,7 @@ clas ViewController: UIViewController {
         if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {        
             if fileManager.fileExists(atPath: documentDirectoryFileUrl.path) {
                 let fileUrl = documentDirectory.appendingPathComponent(fileName)
-                documentInteractionController = UIDocumentInteractionController(url: pdfUrl)
+                documentInteractionController = UIDocumentInteractionController(url: fileUrl)
                 documentInteractionController.delegate = self
                 documentInteractionController.presentPreview(animated: true)
             }
@@ -41,7 +41,7 @@ clas ViewController: UIViewController {
 
 extension ViewController: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-    return self
+        return self
     }
 }       
 
@@ -64,7 +64,7 @@ func loadPdfWithWebView() {
     if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {        
         if fileManager.fileExists(atPath: documentDirectoryFileUrl.path) {
             let fileUrl = documentDirectory.appendingPathComponent(fileName)
-            let requestURL = URL(string: url)
+            let requestURL = URL(string: fileUrl)
             let request = URLRequest(URL: requestURL!)
             webView.loadRequest(request)
         }
@@ -73,7 +73,7 @@ func loadPdfWithWebView() {
     OR
 
     //Pdf from from web
-    let url = "https://.../documentName.pdf"
+    let url = "someURL/documentName.pdf"
     let requestURL = URL(string: url)
     let request = URLRequest(URL: requestURL!)
     webView.loadRequest(request)
