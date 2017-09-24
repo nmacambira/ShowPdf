@@ -64,8 +64,7 @@ func loadPdfWithWebView() {
     if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {        
         if fileManager.fileExists(atPath: documentDirectoryFileUrl.path) {
             let fileUrl = documentDirectory.appendingPathComponent(fileName)
-            let requestURL = URL(string: fileUrl)
-            let request = URLRequest(URL: requestURL!)
+            let request = URLRequest(URL: fileUrl)
             webView.loadRequest(request)
         }
     }   
