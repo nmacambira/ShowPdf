@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gRf-Jf-p6l">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Menu-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShowPdf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zal-P4-QQM">
+                                <rect key="frame" x="139" y="96" width="97" height="30"/>
+                                <state key="normal" title="PDF from disk"/>
+                                <connections>
+                                    <action selector="loadPdfFromDisk:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VDg-a3-FxG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-0o-Aa2">
+                                <rect key="frame" x="111.5" y="158" width="151" height="30"/>
+                                <state key="normal" title="PDF from App's folder"/>
+                                <connections>
+                                    <action selector="loadPdfFromAppsFolder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7M-YI-pMm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTC-iM-HLX">
+                                <rect key="frame" x="139" y="220" width="97" height="30"/>
+                                <state key="normal" title="PDF from web"/>
+                                <connections>
+                                    <action selector="loadPdfFromWeb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oct-0k-zXL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OTC-iM-HLX" firstAttribute="top" secondItem="bsY-0o-Aa2" secondAttribute="bottom" constant="32" id="1bf-D4-gV8"/>
+                            <constraint firstItem="bsY-0o-Aa2" firstAttribute="top" secondItem="zal-P4-QQM" secondAttribute="bottom" constant="32" id="4ZE-bO-4xr"/>
+                            <constraint firstItem="OTC-iM-HLX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EXg-4U-7Bd"/>
+                            <constraint firstItem="bsY-0o-Aa2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YE7-OY-02Q"/>
+                            <constraint firstItem="zal-P4-QQM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hv1-kY-Wod"/>
+                            <constraint firstItem="zal-P4-QQM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="vbg-9a-d5t"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Menu" id="deh-NW-HU1"/>
+                    <connections>
+                        <segue destination="lAA-xK-Nof" kind="presentation" identifier="showPdfOnWebView" id="ZwV-n5-IP9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="793"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="gQt-Ln-JZb">
+            <objects>
+                <viewController id="lAA-xK-Nof" customClass="WebViewController" customModule="ShowPdf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wx6-fM-LD0"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Gw-cu-Ujk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gMM-8e-qd7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Djk-E5-yoJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzx-Hp-Q8G">
+                                <rect key="frame" x="16" y="20" width="42" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="lAA-xK-Nof" eventType="touchUpInside" id="rdM-dH-gdW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Document's Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMw-Dz-TPH">
+                                <rect key="frame" x="74" y="27" width="227" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FMw-Dz-TPH" secondAttribute="trailing" constant="74" id="GQ2-1L-LOc"/>
+                            <constraint firstItem="Djk-E5-yoJ" firstAttribute="top" secondItem="Wx6-fM-LD0" secondAttribute="bottom" constant="44" id="Ghw-JW-Cdm"/>
+                            <constraint firstItem="Hzx-Hp-Q8G" firstAttribute="leading" secondItem="gMM-8e-qd7" secondAttribute="leading" constant="16" id="K7f-V1-iqQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Djk-E5-yoJ" secondAttribute="trailing" id="SDC-by-SmJ"/>
+                            <constraint firstItem="4Gw-cu-Ujk" firstAttribute="top" secondItem="Djk-E5-yoJ" secondAttribute="bottom" id="ele-ip-Sia"/>
+                            <constraint firstItem="Hzx-Hp-Q8G" firstAttribute="top" secondItem="Wx6-fM-LD0" secondAttribute="bottom" id="mJk-vh-IlF"/>
+                            <constraint firstItem="FMw-Dz-TPH" firstAttribute="leading" secondItem="Hzx-Hp-Q8G" secondAttribute="trailing" constant="16" id="q7b-e0-if3"/>
+                            <constraint firstItem="FMw-Dz-TPH" firstAttribute="top" secondItem="Wx6-fM-LD0" secondAttribute="bottom" constant="7" id="tW4-BM-Gzl"/>
+                            <constraint firstItem="Djk-E5-yoJ" firstAttribute="leading" secondItem="gMM-8e-qd7" secondAttribute="leading" id="tmP-2A-P6f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="documentsTitleLabel" destination="FMw-Dz-TPH" id="kyl-yG-vrL"/>
+                        <outlet property="webView" destination="Djk-E5-yoJ" id="3vs-9A-osV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NYR-in-qt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823" y="793"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0kt-uh-6j0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gRf-Jf-p6l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vx7-q8-mij">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qX1-rr-Ils"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhk-ne-phs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="792.95352323838085"/>
+        </scene>
+    </scenes>
+</document>
