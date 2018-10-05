@@ -59,7 +59,7 @@ class NMFileManager {
     ///
     /// - Parameter fileName: The string of the name of the file
     /// - Returns: URL The url of the file.
-    static func getFileLocation(_ fileName : String) -> URL? {
+    private static func getFileLocation(_ fileName : String) -> URL? {
         let fileManager = FileManager.default
         if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileUrl = documentDirectory.appendingPathComponent(fileName)

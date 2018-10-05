@@ -51,7 +51,7 @@ class WebViewController: UIViewController {
         }
     }
     
-    func refreshWebView(_ refresh: UIRefreshControl){
+    @objc func refreshWebView(_ refresh: UIRefreshControl){
         loadWebView()
         refresh.endRefreshing()
     }    

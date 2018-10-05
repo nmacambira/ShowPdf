@@ -85,5 +85,5 @@ func loadPdfWithWebView() {
 
 ## Info
 
-- Swift 3.1 
+- Swift 4.1 
 
